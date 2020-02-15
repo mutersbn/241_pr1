@@ -15,6 +15,11 @@
 
 int main()
 {
+	static const double nano_to_ms_conversion=1000000.0f,
+				 s_to_ms_conversion=1000.0f;
+	
+	double time_s, time_ns;
+
 	int user_input, scanf_return_val, count=1;
 	int * array;
 	int * selection_array;
@@ -26,6 +31,7 @@ int main()
 	while(1)
 	{
 		DottedLine();
+		DottedLine();
 		printf("\nPlease input the size of the array: ");
 		scanf_return_val = scanf("%d", &user_input);
 		
@@ -36,7 +42,7 @@ int main()
 				user_input > 1000000)
 		{
 			printf("I'm sorry, this input is not valid. Goodbye.\n");
-			return -1;
+			return 0;
 		}
 
 		array = CreateArray(user_input); /* Original array, used for both
@@ -51,8 +57,9 @@ int main()
 		clock_gettime(CLOCK_MONOTONIC_RAW, &end);
 
 		/* Selection Array Calculations */
-		selection.runtime_ms = (end.tv_sec - start.tv_sec) * 1000.0f + 
-				(end.tv_nsec - start.tv_nsec) / 1000000.0f;
+		time_s = (end.tv_sec - start.tv_sec) * s_to_ms_conversion;
+		time_ns = (end.tv_nsec - start.tv_nsec) / nano_to_ms_conversion;
+		selection.runtime_ms = time_s + time_ns;
 		selection.sum_ms += selection.runtime_ms;
 		selection.avg_time_ms = selection.sum_ms / count;
 
@@ -77,8 +84,9 @@ int main()
 		clock_gettime(CLOCK_MONOTONIC_RAW, &end);
 		
 		/* Bubble Sort Calculations */
-		bubble.runtime_ms = (end.tv_sec - start.tv_sec) * 1000.0f + 
-				(end.tv_nsec - start.tv_nsec) / 1000000.0f;
+		time_s = (end.tv_sec - start.tv_sec) * s_to_ms_conversion;
+		time_ns = (end.tv_nsec - start.tv_nsec) / nano_to_ms_conversion;
+		bubble.runtime_ms = time_s + time_ns;
 		bubble.sum_ms += bubble.runtime_ms;
 		bubble.avg_time_ms = bubble.sum_ms / count;
 

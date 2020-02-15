@@ -1,20 +1,8 @@
 /*	Author: Noah Mutersbaugh 
  *	Date: 02/12/2020 
  *	Name of File: sort.c
- *	Description: This is for Project 1 of CIS214-03 with Professor Xinli
- *	Wang.  The purpose of this assignment is to gain familiarity with two
- *	different sorting techniques - Bubble and Selection. 
- *
- *	Three functions must be defined and implemented: 1. Main - to
- *	start and time the algorithms by invoking the function 2.
- *	Selection - The function to run selection sort 3. Bubble - The
- *	function to run bubble sort
- *
- * 	The header file 'sort.h' will be the file that defines each
- * 	prototype function, while this .c file 'sort.c' will be the file
- * 	that implements each function.
- *
- * 	EDIT: In the future, much of this will go in the README.txt
+ *	Description: This file holds the logic for each function used for this
+ *	project. 
  */
 
 /* Included header files. */
@@ -98,13 +86,12 @@ int SelectionSort(int * array, int size_of_array)
 	if(size_of_array < 50)
 	{
 		DottedLine();
-		printf("\nHere is the sorted array in an ascending order:\n");
+		printf("\nSorted Selection Array:");
 		PrintArray(array, size_of_array);
 	}
 	
 	DottedLine();
 	printf("\nSelection Sort Output:");
-	DottedLine();
 
 	return 1; 
 }
@@ -134,13 +121,12 @@ int BubbleSort(int * array, int size_of_array)
 	if(size_of_array < 50)
 	{
 		DottedLine();
-		printf("\nSorted Bubble Array: \n");
+		printf("\nSorted Bubble Array:");
 		PrintArray(array, size_of_array);
 	}
 
 	DottedLine();
-	printf("\nBubble Sort Output: \n");
-	DottedLine();
+	printf("\nBubble Sort Output:");
 
 	return 1;
 }
